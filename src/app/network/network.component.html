@@ -1,0 +1,140 @@
+
+        <div class="row ">
+            <div class="col-6 col-md-4">
+                <div class="card">
+                    
+                    <div class="card-body">
+                        <div class="card-title">
+                            {{currentUser.firstName}} {{currentUser.lastName}}
+                        </div>
+                        <div class="card-body">
+                            <tr>
+                                <td>
+                                    <div class="container">
+                                        <img class="img-thumbnail" [src]=userPhoto  width="200" height="200" alt="Profile Picture">
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    {{ friendsCount }} Friends
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    {{ postsCount }} Posts
+                                </td>
+                            </tr>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+            </div>
+            
+            
+            <div class="col-12 col-md-8">
+                <div *ngIf="requestedByMeList.length > 0">
+                    <div class="row">
+                        <div class="card" style="min-width: 45rem">
+                            <div class="card-header">
+                                My Friend Requests
+                            </div>
+                            <div class="card-body">
+                                <div *ngFor="let user of requestedByMeList">
+                                    <div class="card" style="min-width: 45rem">
+                                        <div class="card-body">
+                                            <div class="row justify-content-center">
+                                                <div class="col align-self-center">                                           
+                                                    <img class="rounded-circle z-depth-2 mw-100 mh-100" (click)="onImageClick(user)" width="120" height="120" alt="No picture" [src]="user.photoUrl" data-holder-rendered="true">
+                                                </div>
+                                                <div class="col align-self-center">
+                                                    {{user.firstName}} {{user.lastName}}
+                                                </div>
+                                                <div class="col align-self-center">
+                                                    <button type="button" class="btn btn-primary" (click)="sendRequest(user)" style="min-width: 5rem" disabled>Request Pending</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                               
+                        </div>
+                    </div>
+                </div>
+                   
+            
+                <div *ngIf="requestedToMeList.length > 0">
+                    <div class="row">
+                        <div class="card" style="min-width: 45rem">
+                            <div class="card-header">
+                                Friend Requests
+                            </div>
+                            <div class="card-body">
+                                <div *ngFor="let user of requestedToMeList">
+                                    <div class="card" style="min-width: 45rem">
+                                        <div class="card-body">
+                                            <div class="row justify-content-center">
+                                                <div class="col align-self-center">                                           
+                                                    <img class="rounded-circle z-depth-2 mw-100 mh-100" (click)="onImageClick(user)" width="120" height="120" alt="No picture" [src]="user.photoUrl" data-holder-rendered="true">
+                                                </div>
+                                                <div class="col align-self-center">
+                                                    {{user.firstName}} {{user.lastName}}
+                                                </div>
+                                                <div class="col align-self-center">
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <button type="button" class="btn btn-primary" (click)="acceptRequest(user)" style="min-width: 5rem">Accept</button>
+                                                        </div>
+                                                        <div class="col">
+                                                            <button type="button" class="btn btn-primary" (click)="rejectRequest(user)" style="min-width: 5rem">Reject</button>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                                
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="usersList.length > 0">
+                    <div class="row">
+                        <div class="card" style="min-width: 45rem">
+                            <div class="card-header">
+                                All Users
+                            </div>
+                            <div class="card-body">
+                                <div *ngFor="let user of usersList">
+                                    <div class="card" style="min-width: 45rem">
+                                        <div class="card-body">
+                                            <div class="row justify-content-center">
+                                                <div class="col align-self-center">                                           
+                                                    <img class="rounded-circle z-depth-2 mw-100 mh-100" (click)="onImageClick(user)" width="120" height="120" alt="No picture" [src]="user.photoUrl" data-holder-rendered="true">
+                                                </div>
+                                                <div class="col align-self-center">
+                                                    {{user.firstName}} {{user.lastName}}
+                                                </div>
+                                                <div class="col align-self-center">
+                                                    <button type="button" class="btn btn-primary" (click)="sendRequest(user)" style="min-width: 5rem">Send Request</button>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                                
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+

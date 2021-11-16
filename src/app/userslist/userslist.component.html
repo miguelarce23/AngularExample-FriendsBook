@@ -1,0 +1,74 @@
+
+        <div *ngIf="currentUser.isAdmin == false">
+            <div class="row justify-content-center">
+                <div class="col-md-5 offset-md-3 align-self-center">
+                    <div class="container">
+                        Permission denied
+                    </div>
+                    
+                </div>
+            </div>
+                
+        </div>
+        <div *ngIf="currentUser.isAdmin" class="row ">
+            <div class="col-6 col-md-4">
+                <div class="card">
+                    
+                    <div class="card-body">
+                        <div class="card-title">
+                            {{currentUser.firstName}} {{currentUser.lastName}}
+                        </div>
+                        <div class="card-body">
+                            <tr>
+                                <td>
+                                    <div class="container">
+                                        <img class="img-thumbnail" [src]=userPhoto  width="200" height="200" alt="Profile Picture">
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    {{ friendsCount }} Friends
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    {{ postsCount }} Posts
+                                </td>
+                            </tr>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="col-12 col-md-8">
+                <div class="row">
+                    <div class="card" style="min-width: 45rem">
+                        <div class="card-body">
+                            <div *ngFor="let user of usersList">
+                                <div class="card" style="min-width: 45rem">
+                                    <div class="card-body">
+                                        <div class="row justify-content-center">
+                                            <div class="col align-self-center">                                           
+                                                <img class="rounded-circle z-depth-2 mw-100 mh-100" (click)="onImageClick(user)" width="150" height="150" alt="No picture" [src]="user.photoUrl" data-holder-rendered="true">
+                                            </div>
+                                            <div class="col align-self-center">
+                                                {{user.firstName}} {{user.lastName}}
+                                            </div>
+                                            <div class="col align-self-center">
+                                                <button type="button" class="btn btn-primary" (click)="blockUnblockUser(user)" style="min-width: 5rem">{{ user.isActive == true ? 'Block User' : 'Unblock User'}}</button>                                          
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                           
+                    </div>
+                </div>
+            </div>
+        </div>
+
